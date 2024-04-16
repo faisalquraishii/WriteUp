@@ -1,0 +1,81 @@
+--> We'll use Appwrite SDK.
+WHAT IS AN SDK?
+SDK stands for Software Development Kit. It is a set of tools, libraries, and documentation 
+that developers use to build software applications for a specific platform, framework, or programming 
+language.
+
+WHY SDK INSTEAD OF API?
+SDK is generally more efficient than making direct API calls because the SDK provides higher-level 
+abstractions. For example, if you're using the Appwrite SDK to work with user authentication, 
+you might call a method like createUser or loginUser provided by the SDK. Internally, the SDK constructs
+the appropriate HTTP requests, sends them to the Appwrite server, receives the responses, 
+and parses them back into a format that your application can work with.
+
+
+--> OVERVIEW
+Database Setup:
+
+You've created a database named 'blog' within the Database section of Appwrite.
+Inside this database, you've defined a collection named 'articles' to store blog articles.
+Each article in the 'articles' collection has attributes like title, content, etc.
+Storage Setup:
+
+You've created a bucket named 'images' within the Storage section of Appwrite.
+This bucket will be used to store images or other media files related to your blog articles.
+Backend Logic:
+
+You'll write backend logic using Appwrite's server-side SDK or REST API to interact with the database 
+and storage.
+This logic will handle tasks like:
+Creating, reading, updating, and deleting (CRUD) blog articles in the 'articles' collection.
+Uploading and serving images stored in the 'images' bucket.
+Implementing user authentication, if required, to secure access to the blog.
+Frontend Implementation:
+
+You'll build a frontend application using a framework like React, Vue.js, or Angular.
+This frontend will communicate with your backend logic via HTTP requests to fetch blog articles, 
+upload images, etc.
+
+
+/*BEHAVIOUR OF useEffect() 
+--> When you don't provide a dependency array, the useEffect runs on every render, 
+  including the initial render and subsequent re-renders caused by state or prop changes.
+
+  Eg: So, if you have a state variable like count and you update it using setCount(newValue), 
+  it will cause a re-render of the component where count is used, as well as any child components 
+  that use count as a prop or state
+
+
+-->When you provide an empty dependency array [], the useEffect runs only once, specifically
+  on the initial render of the component, and not on subsequent re-renders.
+*/ 
+
+/*useRef
+Suppose you want to console the value of count (const a = 0)--> but there's a problem.
+Due to the subsequent renders, the value of a normal variable will not persist.
+If you want a variable to persist across renders but you don't want changes to it to 
+trigger re-renders, you can use the useRef hook. 
+for eg: const a = useRef(0)
+        and use it by a.current --> this is how the variable will persist
+
+  Second usage of useRef:
+  In React, direct DOM manipulation is generally avoided because it can lead to inconsistencies 
+  between the virtual DOM and the actual DOM, potentially causing unexpected behavior or performance 
+  issues. Instead, React provides a mechanism called refs that allows you to access and interact with 
+  DOM elements directly when necessary.
+
+  for eg: 
+  function App(){
+    const btnRef = useRef()
+
+    useEffect(() => {
+        btnRef.current.style.backgroundColor="red"
+    }, [])
+
+    return (
+        <div>
+            <button ref={btnRef}> BUTTON <button/>
+        <div/>
+    )
+  }
+*/ 
